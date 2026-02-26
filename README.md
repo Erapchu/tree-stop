@@ -9,7 +9,24 @@ ufw allow 80/tcp
 reboot
 ```
 
-## 2 Configure (auto, recommended)
+## Configure (manually)
+
+```bash
+apt install -y curl wget socat cron
+curl https://get.acme.sh | sh -s email=youremail@gmail.com
+/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+ufw allow xxx/tcp
+```
+
+### Check cron jobs (should be ~/.acme.sh)
+
+```bash
+crontab -l
+```
+
+## Configure (auto)
 
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
@@ -26,23 +43,6 @@ x-ui
 1. Get SSL (Domain)
 Port 80 (default)
 reload for ACME - yes
-```
-
-## 2 Configure (manually)
-
-```bash
-apt install -y curl wget socat cron
-curl https://get.acme.sh | sh -s email=youremail@gmail.com
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-ufw allow xxx/tcp
-```
-
-## Check cron jobs (should be ~/.acme.sh)
-
-```bash
-crontab -l
 ```
 
 # AdGuard:
