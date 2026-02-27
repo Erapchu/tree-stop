@@ -52,10 +52,12 @@ sudo mkdir -p /opt/adguard/{work,conf}
 cd /opt/adguard
 ```
 
+### XRay
+
 File:
 /opt/adguard/docker-compose.yml
 
-```yaml
+```yml
 services:
   adguard:
     image: adguard/adguardhome:latest
@@ -103,3 +105,50 @@ Check AdGuard:
 ```bash
 dig @127.0.0.1 -p 5353 doubleclick.net
 ```
+
+### Amnezia
+
+Check Amnezia interface:
+
+```bash
+ip -br addr show
+```
+
+Find amnezia network interface (`amn0` is `172.29.172.1` for example). And forward address and port to AdGuard:
+
+```yml
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    restart: unless-stopped
+    volumes:
+      - ./work:/opt/adguardhome/work
+      - ./conf:/opt/adguardhome/conf
+    ports:
+      # DNS via VPN-inteface (like amn0)
+      - "172.29.172.1:53:53/udp"
+      - "172.29.172.1:53:53/tcp"
+
+      # UI locally (for yourself via SSH tunnel)
+      - "127.0.0.1:3000:3000/tcp"
+```
+
+```bash
+sudo docker compose up -d
+```
+
+On PC:
+```
+ssh -L 3000:127.0.0.1:3000 root@IP_VPS
+```
+
+Just setup AdGuard as you like.
+
+Check AdGuard:
+
+```bash
+dig @172.29.172.1 example.com
+```
+
+Set DNS server on client side to your new DNS like `172.29.172.1`.
