@@ -132,6 +132,9 @@ services:
 
       # UI locally (for yourself via SSH tunnel)
       - "127.0.0.1:3000:3000/tcp"
+      # UI via WG (open from device when connected to
+AmneziaWG)
+      - "172.29.172.1:3000:3000/tcp"
 ```
 
 ```bash
