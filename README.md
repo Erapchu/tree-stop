@@ -199,21 +199,21 @@ sudo apt install -y iptables-persistent
 sudo netfilter-persistent save
 ```
 
-```
+```bash
 VPS2_IP="123.123.123.123"
 PORT_443="443"
 
-# NAT для 443/tcp
+# NAT for 443/tcp
 sudo iptables -t nat -A PREROUTING  -p tcp --dport "$PORT_443" -j DNAT --to-destination "$VPS2_IP:$PORT_443"
 sudo iptables -t nat -A POSTROUTING -p tcp -d "$VPS2_IP" --dport "$PORT_443" -j MASQUERADE
 
-# FORWARD для 443/tcp
+# FORWARD for 443/tcp
 sudo iptables -A FORWARD -p tcp -d "$VPS2_IP" --dport "$PORT_443" -m conntrack --ctstate NEW -j ACCEPT
 ```
 
 save:
 
-```
+```bash
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
 ```
