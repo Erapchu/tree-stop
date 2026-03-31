@@ -203,3 +203,9 @@ save:
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
 ```
+
+check:
+
+```bash
+iptables -L -n -v --line-numbers
+```
