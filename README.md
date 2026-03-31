@@ -5,32 +5,18 @@
 ```bash
 apt update
 apt upgrade -y
-ufw allow 80/tcp
-reboot
-```
-
-## Configure (manually)
-
-```bash
-apt install -y curl wget socat cron
-curl https://get.acme.sh | sh -s email=youremail@gmail.com
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-ufw allow xxx/tcp
-```
-
-### Check cron jobs (should be ~/.acme.sh)
-
-```bash
-crontab -l
 ```
 
 ## Configure (auto)
 
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-ufw allow xxx/tcp
+```
+
+### Check cron jobs (should be ~/.acme.sh)
+
+```bash
+crontab -l
 ```
 
 And set self-signed certificate.
