@@ -16,6 +16,7 @@ PORT="443"
 
 # Включить маршрутизацию
 sudo sysctl -w net.ipv4.ip_forward=1
+echo 'net.ipv4.ip_forward = 1' | sudo tee /etc/sysctl.d/99-ipforward.conf >/dev/null
 
 # DNAT
 sudo iptables -t nat -A PREROUTING -p tcp --dport "$PORT" -j DNAT --to-destination "$VPS2:$PORT"
