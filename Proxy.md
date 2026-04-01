@@ -16,6 +16,8 @@ PORT="443"
 
 # Включить маршрутизацию
 sudo sysctl -w net.ipv4.ip_forward=1
+
+# Сохранить маршрутизацию
 echo 'net.ipv4.ip_forward = 1' | sudo tee /etc/sysctl.d/99-ipforward.conf >/dev/null
 
 # DNAT
@@ -35,16 +37,18 @@ sudo apt install -y iptables-persistent
 sudo netfilter-persistent save
 ```
 
+При добавлении новых портов:
+
 ```bash
 VPS2="123.123.123.123"
-PORT="443"
+PORT="55444"
 
-# NAT for 443/tcp
-sudo iptables -t nat -A PREROUTING  -p tcp --dport "$PORT" -j DNAT --to-destination "$VPS2:$PORT"
-sudo iptables -t nat -A POSTROUTING -p tcp -d "$VPS2" --dport "$PORT" -j MASQUERADE
+# NAT for 55444/udp
+sudo iptables -t nat -A PREROUTING  -p udp --dport "$PORT" -j DNAT --to-destination "$VPS2:$PORT"
+sudo iptables -t nat -A POSTROUTING -p udp -d "$VPS2" --dport "$PORT" -j MASQUERADE
 
-# FORWARD for 443/tcp
-sudo iptables -A FORWARD -p tcp -d "$VPS2" --dport "$PORT" -m conntrack --ctstate NEW -j ACCEPT
+# FORWARD for 55444/udp
+sudo iptables -A FORWARD -p udp -d "$VPS2" --dport "$PORT" -m conntrack --ctstate NEW -j ACCEPT
 ```
 
 save:
