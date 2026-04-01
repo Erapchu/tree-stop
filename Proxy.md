@@ -62,4 +62,13 @@ check:
 
 ```bash
 iptables -L -n -v --line-numbers
+iptables -t nat -L -n -v --line-numbers
+```
+
+delete:
+
+```bash
+iptables -D FORWARD rule_num
+iptables -t nat -D PREROUTING rule_num
+iptables -t nat -D POSTROUTING rule_num
 ```
