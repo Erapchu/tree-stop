@@ -128,7 +128,7 @@ sudo docker compose up -d
 
 On PC:
 ```
-ssh -L 3000:127.0.0.1:3000 root@IP_VPS
+ssh -L 3000:127.0.0.1:3000 root@IP_VPS -i path_to_private_key
 ```
 
 Just setup AdGuard as you like.
