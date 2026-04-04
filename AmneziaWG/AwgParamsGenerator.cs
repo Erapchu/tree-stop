@@ -23,7 +23,7 @@ public static class AwgParamsGenerator
         uint h1 = RandomUIntInBlock(100_000_000u, 100_000_063u);
         uint h2 = RandomUIntInBlock(700_000_000u, 700_000_063u);
         uint h3 = RandomUIntInBlock(1_500_000_000u, 1_500_000_063u);
-        uint h4 = RandomUIntInBlock(3_000_000_000u, 3_000_000_063u);
+        uint h4 = RandomUIntInBlock(2_000_000_000u, 2_000_000_063u);
 
         Console.WriteLine($"Jc = {jc}");
         Console.WriteLine($"Jmin = {jmin}");
