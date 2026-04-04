@@ -90,3 +90,21 @@ iptables -t nat -L POSTROUTING -n -v --line-numbers
 ```bash
 systemctl restart awg-quick@awg0
 ```
+
+Проверка состояния
+```bash
+systemctl status awg-quick@awg0 # чё там с процессом
+awg show awg0 # чё там с подключениями
+```
+
+Новый клиент:
+```bash
+# Сгенерировать ключи
+awg genkey | tee /tmp/new-private.key | awg pubkey > /tmp/new-public.key
+
+# Добавить пира в серверный конфиг
+cat >> /etc/amnezia/amneziawg/awg0.conf << EOF
+
+# Перезапустить сервер
+systemctl restart awg-quick@awg0
+```
