@@ -35,7 +35,7 @@ echo $NET_IF    # обычно eth0, ens3 или что-то подобное
 ```
 
 Пишем конфиг так:
-```conf
+```ini
 # /etc/amnezia/amneziawg/awg0.conf
 [Interface]
 Address = 50.1.1.1/24
