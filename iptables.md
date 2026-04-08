@@ -8,6 +8,8 @@ iptables -A INPUT -p tcp --dport 11653 -j ACCEPT
 
 ```bash
 iptables -L INPUT -n -v --line-numbers
+iptables -L OUTPUT -n -v --line-numbers
+iptables -L -n -v
 ```
 
 Удалить:
