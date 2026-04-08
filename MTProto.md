@@ -47,3 +47,7 @@ services:
 - `1` is the number of workers. You can increase the number of workers, if you have a powerful server.
 
 Generate the link with following schema: `tg://proxy?server=SERVER_NAME&port=PORT&secret=SECRET` (or let the official bot generate it for you).
+
+Register your proxy with @MTProxybot on Telegram.
+
+Set received tag with arguments: `-P <proxy tag>`
