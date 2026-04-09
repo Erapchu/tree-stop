@@ -1,0 +1,1 @@
+.\xray.exe run -test -c .\config.json
