@@ -108,3 +108,27 @@ cat >> /etc/amnezia/amneziawg/awg0.conf << EOF
 # Перезапустить сервер
 systemctl restart awg-quick@awg0
 ```
+
+New client (add to `awg0.conf`):
+
+```ini
+...
+[Peer]
+PublicKey = CLIENT_PUBLIC_KEY
+AllowedIPs = 10.8.0.2/32
+```
+
+Client config example:
+
+```ini
+[Interface]
+Address = 10.8.0.2/32
+PrivateKey = CLIENT_PRIVATE_KEY
+DNS = 10.8.0.1
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY
+Endpoint = your.server.ip:51820
+AllowedIPs = 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
+PersistentKeepalive = 25
+```
