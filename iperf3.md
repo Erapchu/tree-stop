@@ -5,7 +5,7 @@ iperf3 -s
 
 On client:
 ```bash
-iperf3 -c 10.10.12.8 -P 5 -R
+iperf3 -c 10.10.12.8 -P 4 -R -b 100M -u
 ```
 
 iperf --help:
