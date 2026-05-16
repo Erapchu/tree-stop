@@ -9,6 +9,11 @@ sudo grep "Failed password" /var/log/auth.log \
 | head -20
 ```
 
+Статус:
+```bash
+sudo fail2ban-client status sshd
+```
+
 Перезапуск:
 
 ```bash
